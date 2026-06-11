@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سيرفر ريسبكت | RESPECT MTA</title>
+    <style>
+        /* تنسيقات عامة للموقع */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* الرأس (الهيدر) */
+        header {
+            background: linear-gradient(135deg, #1f2833, #0b0c10);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 4px solid #4ed5ff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: #4ed5ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(78, 213, 255, 0.6);
+        }
+
+        .logo p {
+            font-size: 1.3rem;
+            color: #95a5a6;
+            margin-top: 15px;
+        }
+
+        /* حاوية الأزرار */
+        .btn-container {
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            margin: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-ip {
+            background-color: #4ed5ff;
+            color: #0b0c10;
+            box-shadow: 0 4px 15px rgba(78, 213, 255, 0.3);
+        }
+
+        .btn-ip:hover {
+            background-color: #66e0ff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(78, 213, 255, 0.5);
+        }
+
+        .btn-discord {
+            background-color: #5865F2;
+            color: white;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+        }
+
+        .btn-discord:hover {
+            background-color: #7289da;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.5);
+        }
+
+        /* المحتوى الرئيسي */
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background-color: #1f2833;
+            padding: 35px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-right: 6px solid #4ed5ff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        section h2 {
+            color: #4ed5ff;
+            margin-top: 0;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #0b0c10;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        /* قائمة القوانين */
+        .rules-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .rules-list li {
+            padding: 12px 15px;
+            border-bottom: 1px solid #0b0c10;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .rules-list li::before {
+            content: "✦";
+            color: #4ed5ff;
+            font-weight: bold;
+            margin-left: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* شبكة الإدارة */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .staff-card {
+            background-color: #0b0c10;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid #4ed5ff;
+            transition: transform 0.3s ease;
+        }
+
+        .staff-card:hover {
+            transform: scale(1.05);
+        }
+
+        .staff-card h3 {
+            margin: 0 0 10px 0;
+            color: #ffffff;
+            font-size: 1.4rem;
+        }
+
+        .staff-card p {
+            margin: 0;
+            font-size: 1rem;
+            color: #4ed5ff;
+            font-weight: bold;
+        }
+
+        /* أسفل الصفحة (الفوتر) */
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #c5c6c7;
+            font-size: 1rem;
+            background-color: #1f2833;
+            margin-top: 60px;
+            border-top: 2px solid #4ed5ff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- رأس الصفحة -->
+    <header>
+        <div class="logo">
+            <h1>RESPECT SERVER</h1>
+            <p>أهلاً بكم في الموقع الرسمي لسيرفر ريسبكت لـ Multi Theft Auto</p>
+        </div>
+        <div class="btn-container">
+            <!-- الكود مبرمج لنسخ الآي بي الافتراضي للسيرفر عند الضغط -->
+            <button class="btn btn-ip" onclick="copyIP()">اضغط لنسخ آي بي السيرفر</button>
+            <a href="https://discord.gg/fYnxVUB7" target="_blank" class="btn btn-discord">انضم إلى سيرفر الديسكورد</a>
+        </div>
+    </header>
+
+    <!-- محتوى الموقع الرئيسي -->
+    <div class="container">
+
+        <!-- قسم من نحن -->
+        <section id="about">
+            <h2>عن السيرفر</h2>
+            <p>سيرفر ريسبكت (Respect) هو عالمك الخاص في لعبة MTA، حيث نقدم لك بيئة لعب متكاملة، مستقرة وخالية من المشاكل. نسعى دائماً لتقديم أفضل الحصريات، المودات المبتكرة، والفعاليات المستمرة لضمان تجربة حماسية وممتعة لجميع اللاعبين.</p>
+        </section>
+
+        <!-- قسم القوانين -->
+        <section id="rules">
+            <h2>قوانين السيرفر العامة</h2>
+            <ul class="rules-list">
+                <li>الاحترام المتبادل بين جميع اللاعبين وأعضاء طاقم الإدارة.</li>
+                <li>يمنع استخدام أي برامج غش أو استغلال الثغرات ويؤدي ذلك للحظر النهائي.</li>
+                <li>يمنع الإعلان أو الترويج لسيرفرات أخرى بأي شكل من الأشكال.</li>
+                <li>التخريب المتعمد على اللاعبين أو إفساد متعة اللعب يعرضك للعقوبة.</li>
+                <li>في حال واجهتك مشكلة، توجه مباشرة لفتح تذكرة (Ticket) في الديسكورد.</li>
+            </ul>
+        </section>
+
+        <!-- قسم الإدارة -->
+        <section id="staff">
+            <h2>طاقم الإدارة العليا</h2>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <h3>SAYO</h3>
+                    <p>Founder / صاحب السيرفر</p>
+                </div>
+                <div class="staff-card">
+                    <h3>AHMED//SARM</h3>
+                    <p>إدارة السيرفر</p>
+                </div>
+                <div class="staff-card">
+                    <h3>BS6</h3>
+                    <p>فريق البرمجة</p>
+                </div>
+                <div class="staff-card">
+                    <h3>ِALPHA</h3>
+                    <p>الرقابة</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- حقوق الحقوق -->
+    <footer>
+        <p>&copy; 2026 Respect Server. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- سكربت نسخ الآي بي تلقائياً -->
+    <script>
+        function copyIP() {
+            // يمكنك تغيير هذا الآي بي لاحقاً بآي بي سيرفرك الفعلي
+            const ipAddress = "SOON"; 
+            navigator.clipboard.writeText(ipAddress).then(() => {
+                alert("تم نسخ آي بي سيرفر Respect بنجاح! افتح اللعبة والمس الحظ.");
+            }).catch(err => {
+                alert("حدث خطأ أثناء نسخ الآي بي تلقائياً.");
+            });
+        }
+    </script>
+
+</body>
+</html>
